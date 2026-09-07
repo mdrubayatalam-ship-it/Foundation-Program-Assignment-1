@@ -3,16 +3,16 @@
 function describeValue(value){
      
      if(value)
-        return console.log(`"${typeof(value)} | truthy"`);
+        return `"${typeof(value)} | truthy"`;
     else
-        return console.log(`"${typeof(value)} | falsy"`);
+        return `"${typeof(value)} | falsy"`;
 
 
 }
 
-describeValue(NaN)
+console.log(describeValue(25));
 
-// Question no-2
+// // Question no-2
 
 function getDayType(day = "MONDAY"){
     let WorkingDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday","Saturday"];
@@ -23,63 +23,96 @@ function getDayType(day = "MONDAY"){
 
           switch (true) {
             case WeekendDays.includes(capitalized) || WeekendDays.includes(lowerCase):
-               console.log("Weekend");
+               return `"Weekend"`;
                 break;
             case WeekendDays.includes(lowerCase):
-               console.log("Weekend");
+               return `"Weekend"`;
                 break;
 
             case WorkingDays.includes(lowerCase):
-               console.log("Working Days");
+               return `"Working Day"`;
                 break;
              
             case WorkingDays.includes(capitalized):
-               console.log("Working Days");
+               return`"Working Day"`;
                 break;
                 
                 
             default:
-               console.log("invalid day");
+               return `"invalid day"`;
                 break;
           }
 
 }
 
+console.log(getDayType("sunday"));
 
-getDayType("sunday")
-
-// Question no-3
+// // Question no-3
 
 function validateUsername(username){
    
     
    switch (true) {
     case username.length < 4:
-        console.log( "Too Short");
+        return `"Too Short"`
         break;
 
     case username.includes(" "):
-       console.log("No Space Allowed") ;
+       return `"No Space Allowed"` ;
        break;
 
     case username.toLowerCase().includes("admin"):
-       console.log("Reserved Word") ;
+       return `"Reserved Word"` ;
        break;  
     
    
     default:
-        console.log("Available"); 
+        return `"Available"`; 
         break;
    }
     
 }
 
-validateUsername("rahim123")
-validateUsername("ab")
-validateUsername("a b")
-validateUsername("abcd")
-validateUsername("rahim islam")	
-validateUsername("superadmin99")
-validateUsername("Admin_Rahim")	
+console.log(validateUsername("rahim123"));
+console.log(validateUsername("Admin_Rahim"));
+
+// validateUsername("ab")
+// validateUsername("a b")
+// validateUsername("abcd")
+// validateUsername("rahim islam")	
+// validateUsername("superadmin99")
+// validateUsername("Admin_Rahim")	
+
+
+// // Question no-4
+
+function getCngFare(distance, isNight=false, waitingMinutes=0){
+     
+  let totalFare = 50;
+  let waitingCharge = waitingMinutes * 2;
+  let nightPercentage = (20/100);
+
+    if(distance > 2)
+        totalFare += (distance-2)*15
+      
+    totalFare += waitingCharge;
+     
+    let nightExtra = totalFare * nightPercentage;
+
+    if(isNight)
+         totalFare = totalFare + nightExtra;   
+    
+   return totalFare;
+}
+
+console.log(getCngFare(5, true, 10));
+
+getCngFare(2)
+getCngFare(1)
+getCngFare(5)
+getCngFare(10)
+getCngFare(5, false, 10)
+getCngFare(5, true)
+getCngFare(5, true, 10)
 
 
