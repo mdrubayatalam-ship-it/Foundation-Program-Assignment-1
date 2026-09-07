@@ -116,3 +116,24 @@ getCngFare(5, true)
 getCngFare(5, true, 10)
 
 
+// Question no-5
+
+const getChaseVerdict = (target, scored, ballsLeft) => {
+    let runNeeded = target - scored;
+    let requiredRate = (runNeeded / ballsLeft) * 6;
+
+    if(!runNeeded)
+        return "Won";
+    if(!ballsLeft)
+        return "Lost";
+    if(requiredRate <= 6)
+        return `"Need ${runNeeded} runs in ${ballsLeft} balls | Comfortable"`;
+    if(requiredRate > 6 && requiredRate < 12)
+        return `"Need ${runNeeded} runs in ${ballsLeft} balls | Tough"`;
+    if(requiredRate >= 12)
+        return `"Need ${runNeeded} runs in ${ballsLeft} balls | Almost Impossible"`;
+
+}
+
+console.log(getChaseVerdict(100, 70, 12));
+console.log(getChaseVerdict(150, 149, 1));
